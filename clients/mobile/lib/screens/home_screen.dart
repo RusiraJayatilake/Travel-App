@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:horizontal_list_view/horizontal_list_view.dart';
-// import 'package:mobile/components/navigation_bar.dart';
+import 'package:mobile/components/navigation_bar.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -10,13 +10,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var mainSrc =
+      'https://firebasestorage.googleapis.com/v0/b/traveldb-7a3f0.appspot.com/o/HomeScreen%2Fmain_img_1.jpg?alt=media&token=586d9165-1d94-48b4-9f81-0783cab66f93';
   var src =
       'https://images.unsplash.com/photo-1509233725247-49e657c54213?q=80&w=1949&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  var src1 =
+      'https://images.unsplash.com/photo-1707906311520-846bd7f84b8e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  var src2 =
+      'https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
+  var src3 =
+      'https://plus.unsplash.com/premium_photo-1675745329954-9639d3b74bbf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D';
 
-  Widget HorizontalCard() => SizedBox(
-        width: 250,
+  Widget horizontalCard(imgSrc, data) => SizedBox(
+        width: 10,
         height: 150,
-        child: Image.network(src),
+        child: Column(
+          children: [
+            Image.network(imgSrc),
+            Text(data),
+          ],
+        ),
       );
 
   @override
@@ -26,54 +39,60 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           // Adding a single picture and title
-          Container(
-            padding: EdgeInsets.all(14.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Image.network(
-                  src,
-                  width: double.infinity,
-                  height: 470,
+          Column(
+            children: [
+              SizedBox(
+                width: double.infinity,
+                height: 450,
+                child: Image.network(
+                  mainSrc,
                   fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 10),
-                const Text(
-                  'Title for the main image',
-                  style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(
+                height: 1, // Adjust the height as needed
+              ),
+              const Padding(
+                padding: EdgeInsets.only(left: 8.0),
+                child: Text(
+                  "Home Page",
+                  style: TextStyle(
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ],
-            ),
+              )
+            ],
           ),
           // Adding a horizontal scroller view
           HorizontalListView(
             crossAxisCount: 3, // Number of items displayed per row.
-            crossAxisSpacing: 8.0, // Spacing between items in the same row.
+            crossAxisSpacing: 15.0, // Spacing between items in the same row.
             alignment: CrossAxisAlignment
                 .center, // Alignment of items within the row (default is center).
             children: [
               // List of child widgets
               // Add your widgets here
               Container(
-                child: HorizontalCard(),
+                child: horizontalCard(src1, "Title 1"),
               ),
               Container(
-                child: HorizontalCard(),
+                child: horizontalCard(src2, "Title 2"),
               ),
               Container(
-                child: HorizontalCard(),
+                child: horizontalCard(src3, "Title 3"),
               ),
               Container(
-                child: HorizontalCard(),
+                child: horizontalCard(src, "Title 4"),
               ),
               Container(
-                child: HorizontalCard(),
+                child: horizontalCard(src, "Title 5"),
               ),
             ],
           ),
         ],
       ),
-      // bottomNavigationBar: const AppNavigationBar(),
+      bottomNavigationBar: const AppNavigationBar(),
     );
   }
 }

@@ -6,50 +6,42 @@ class AppNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 5,
-      child: Scaffold(
-        body: Center(child: Placeholder()), // Added a placeholder body
-        bottomNavigationBar: Container(
-          color: Colors.black,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: 15.0,
-              vertical: 20,
+    return Container(
+      color: Colors.black,
+      child: const Padding(
+        padding: EdgeInsets.symmetric(
+          horizontal: 15.0,
+          vertical: 15,
+        ),
+        child: GNav(
+          backgroundColor: Colors.transparent, // Set to transparent
+          color: Colors.white,
+          activeColor: Colors.white,
+          tabBackgroundColor: Colors.grey,
+          gap: 3,
+          padding: EdgeInsets.all(3),
+          tabs: [
+            GButton(
+              icon: Icons.home,
+              text: 'Home',
             ),
-            child: Container(
-              child: const GNav(
-                backgroundColor: Colors.transparent, // Set to transparent
-                color: Colors.white,
-                activeColor: Colors.white,
-                tabBackgroundColor: Colors.grey,
-                gap: 4,
-                padding: EdgeInsets.all(15),
-                tabs: [
-                  GButton(
-                    icon: Icons.home,
-                    text: 'Home',
-                  ),
-                  GButton(
-                    icon: Icons.search,
-                    text: 'Search',
-                  ),
-                  GButton(
-                    icon: Icons.map,
-                    text: 'Map',
-                  ),
-                  GButton(
-                    icon: Icons.favorite,
-                    text: 'Favourite',
-                  ),
-                  GButton(
-                    icon: Icons.person,
-                    text: 'Profile',
-                  ),
-                ],
-              ),
+            GButton(
+              icon: Icons.search,
+              text: 'Search',
             ),
-          ),
+            GButton(
+              icon: Icons.map,
+              text: 'Map',
+            ),
+            GButton(
+              icon: Icons.favorite,
+              text: 'Favourite',
+            ),
+            GButton(
+              icon: Icons.person,
+              text: 'Profile',
+            ),
+          ],
         ),
       ),
     );
